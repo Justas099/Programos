@@ -1,0 +1,60 @@
+<root>
+<node>
+	<name>1</name>
+	<margin>317.5,181.143278062524,345.97,209.103278062524</margin>
+	<edges>
+		<edge>
+			<to>2</to>
+			<cost>63</cost>
+		</edge>
+		<edge>
+			<to>3</to>
+			<cost>45</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>2</name>
+	<margin>262.5,236.143278062524,290.97,264.103278062524</margin>
+	<edges>
+		<edge>
+			<to>4</to>
+			<cost>65</cost>
+		</edge>
+		<edge>
+			<to>5</to>
+			<cost>31</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>3</name>
+	<margin>372.5,236.143278062524,400.97,264.103278062524</margin>
+	<edges>
+		<edge>
+			<to>6</to>
+			<cost>38</cost>
+		</edge>
+		<edge>
+			<to>7</to>
+			<cost>50</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>4</name>
+	<margin>235,292.143278062524,263.47,320.103278062525</margin>
+</node>
+<node>
+	<name>5</name>
+	<margin>290,292.143278062524,318.47,320.103278062525</margin>
+</node>
+<node>
+	<name>6</name>
+	<margin>345,292.143278062524,373.47,320.103278062525</margin>
+</node>
+<node>
+	<name>7</name>
+	<margin>400,292.143278062524,428.47,320.103278062525</margin>
+</node>
+</root>

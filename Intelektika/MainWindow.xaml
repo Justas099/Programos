@@ -1,0 +1,159 @@
+﻿<Window x:Class="Intelektika.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Intelektika"
+        mc:Ignorable="d"
+        Title="DI algoritmų realizacija" Height="580.659" Width="1200.0" Background="#FF493030" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Style="{DynamicResource WindowStyle1}">
+    <Window.Resources>
+        <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                <Grid>
+                    <AdornerDecorator>
+                        <ContentPresenter/>
+                    </AdornerDecorator>
+                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" Visibility="Collapsed" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ResizeMode" Value="CanResizeWithGrip"/>
+                        <Condition Property="WindowState" Value="Normal"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible"/>
+                </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="WindowStyle1" TargetType="{x:Type Window}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <AdornerDecorator>
+                                <ContentPresenter/>
+                            </AdornerDecorator>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                    <Setter Property="Template" Value="{StaticResource WindowTemplateKey}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FFFFF7F7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="260" ></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="mainCanvas" Background="White" Grid.Row="1" Grid.Column="0" RenderTransformOrigin="0.5,0.496"/>
+        <GridSplitter Grid.Column="0" Grid.RowSpan="2" Width="3" Background="#FF8D8686"/>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TabControl Grid.Column="1" Grid.RowSpan="2" BorderBrush="#FFFFF7F7" OpacityMask="#FFFFF7F7" Foreground="#FFFFF7F7" Margin="0" BorderThickness="0" Background="#FF514848">
+            <TabItem Header="Algorithms" Margin="-2,0,0,0">
+                <Grid>
+                    <StackPanel Margin="10,20,10,10">
+
+                        <Label Content="Algorithm" VerticalAlignment="Top" Foreground="White" Padding="0,5,5,5"/>
+                        <ComboBox x:Name="cbAlgorithm" Margin="0" Padding="2,3,5,3" SelectionChanged="cbAlgorithm_SelectionChanged">
+                            <ComboBoxItem Content="Breadth-first search" HorizontalAlignment="Left" Width="138" IsSelected="True"/>
+                            <ComboBoxItem Content="Depth-first search"/>
+                            <ComboBoxItem Content="Depth-limited search"/>
+                            <ComboBoxItem Content="Uniform-cost search"/>
+                            <ComboBoxItem Content="Iterative deepening depth-first search"/>
+                            <ComboBoxItem Content="Greedy best-first search"/>
+                            <ComboBoxItem Content="A* search"/>
+                        </ComboBox>
+                        <!-- BORDERS-->
+                        <Border x:Name="ContentDepthLimitedSearch" BorderThickness="1" Height="53" Margin="0,20,0,0" Visibility="Collapsed">
+                            <StackPanel>
+                                <Label Content="Depth limit" Foreground="White" Padding="0,5,5,5"/>
+                                <TextBox x:Name="tbDepthLimit" Height="23" TextWrapping="Wrap" PreviewTextInput="tbDepthLimit_PreviewTextInput"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border BorderThickness="1" Height="90" Margin="0,20,0,0" Visibility="Collapsed">
+                            <StackPanel/>
+                        </Border>
+
+
+                        <Label Content="Search from" VerticalAlignment="Bottom" Height="24" Foreground="White" Padding="0,5,5,5" Margin="0,100,0,0"/>
+                        <ComboBox x:Name="cbSearchFrom" VerticalAlignment="Bottom" IsEditable="True" Padding="0,2,2,2"/>
+                        <Label Content="Search for" VerticalAlignment="Bottom" Height="24" Foreground="White" Padding="0,5,5,5" Margin="0,5,0,0"/>
+                        <ComboBox x:Name="cbSearchFor" VerticalAlignment="Bottom" IsEditable="True" Margin="0" Padding="0,2,2,2"/>
+                        <Label x:Name="labelAnimationSpeed" Content="Animation speed" VerticalAlignment="Bottom" Foreground="White" Padding="0,5,5,5" Margin="0,30,0,0"/>
+                        <Slider x:Name="sliderAnimationSpeed" VerticalAlignment="Bottom" ValueChanged="Slider_ValueChanged" Maximum="2.5" Margin="0" TickPlacement="BottomRight" TickFrequency="0.25"/>
+                        <Button Content="Search" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Button_Click_1" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Nodes" Margin="-2,0,0,0">
+                <Grid>
+                    <StackPanel Margin="10"/>
+                    <Grid>
+                        <StackPanel Margin="10,0">
+                            <Label Content="Node Name" VerticalAlignment="Top" Foreground="White" Padding="0,5,5,5" Margin="0,20,0,0"/>
+                            <TextBox x:Name="textBoxNewNodeName1" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" KeyDown="textBoxNewNodeName1_KeyDown"/>
+                            <Button x:Name="buttonAddNewNode1" Content="Add Node" VerticalAlignment="Top" Click="buttonAddNewNode_Click" Margin="0,5,0,0"/>
+                            <Label Content="Node selected" VerticalAlignment="Top" Foreground="White" Padding="0,5,5,5" Margin="0,50,0,0" Width="201"/>
+                            <TextBox x:Name="tbNodeSelected" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" TextChanged="tbNodeSelected_TextChanged" KeyDown="tbNodeSelected_KeyDown" Margin="0"/>
+                            <Label Content="Succesor" VerticalAlignment="Top" Foreground="White" Margin="0,5,0,0" Padding="0,5,5,5"/>
+                            <ComboBox x:Name="cbSuccesor" VerticalAlignment="Top" IsEditable="True" SelectionChanged="cbSuccesor_SelectionChanged" KeyDown="cbSuccesor_KeyDown" VerticalContentAlignment="Center" Padding="0,2,2,2"/>
+                            <Label Content="Path cost" Margin="0,5,0,0" VerticalAlignment="Top" Foreground="White" Padding="0,5,5,5"/>
+                            <TextBox x:Name="tbPathCost" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Padding="2,0,0,0" TextAlignment="Center" TextChanged="tbPathCost_TextChanged" PreviewTextInput="tbPathCost_PreviewTextInput"/>
+                            <Button x:Name="buttonRemovePath" Content="Remove" VerticalAlignment="Top" Click="buttonRemovePath_Click" Margin="0,10,0,0"/>
+                            <Button x:Name="buttonAddPath" Content="Add" VerticalAlignment="Top" Click="buttonAddPath_Click" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Graphs" Margin="-2,0,0,0">
+                <Grid>
+                    <StackPanel Margin="10,20,10,10">
+                        <Button x:Name="ButtonGraph1" Content="Map" Margin="0,3,0,0" Click="ButtonGraph1_Click"/>
+                        <Button Content="Binary tree" Margin="0,15,0,0" Click="Button_Click_2"/>
+                        <Button Content="Random" Margin="0,16,0,0" Click="Button_Click_5"/>
+                        <Label Content="User saved" VerticalAlignment="Top" Margin="0,60,0,0" Padding="0,5,5,5" Foreground="White"/>
+                        <ComboBox x:Name="cbSavedGraphs" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0" Padding="2,3,5,3"/>
+                        <Button Content="Load" VerticalAlignment="Top" Padding="1,2,1,1" Margin="0,15,0,0" Click="Button_Click_4"/>
+                        <Button Content="Remove" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_6"/>
+                        <Label Content="Save current" Foreground="White" Margin="0,30,0,0" Padding="0,5,5,5"/>
+                        <TextBox x:Name="tbSaveGraph" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <Button Content="Save" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_3"/>
+                        <Button Content="Clear graph" Click="Button_Click" Margin="0,50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Options" Margin="-2,0,0,0">
+                <StackPanel Margin="10,20,10,10">
+                    <CheckBox x:Name="checkBockPathVisible" Content="Edge path cost visible" Foreground="White" VerticalAlignment="Center" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"/>
+                    <CheckBox x:Name="checkBockPathVisible_Copy" Content="Node cost visible" Foreground="White" VerticalAlignment="Center" Margin="0,14,0,0" Checked="checkBockPathVisible_Copy_Checked" Unchecked="checkBockPathVisible_Copy_Unchecked"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Help" Margin="-2,0,0,0">
+                <StackPanel>
+
+                    <TextBlock Text="Mouse Wheel pressed: move content" Foreground="White" Padding="0,20,0,10" TextWrapping="WrapWithOverflow"/>
+                    <TextBlock Text="Mouse Wheel rotated: zoom" Foreground="White" Padding="0,0,0,10" TextWrapping="WrapWithOverflow"/>
+                    <TextBlock Text="Click while hover over node: selects node" Foreground="White" Padding="0,0,0,10" TextWrapping="WrapWithOverflow"/>
+                    <TextBlock Text="Mouse pressed: moves node which is on hover" Foreground="White" Padding="0,0,0,10" TextWrapping="WrapWithOverflow"/>
+                    <TextBlock Text="And some others.." Foreground="White" Padding="0,0,0,10" TextWrapping="WrapWithOverflow"/>
+                </StackPanel>
+            </TabItem>
+
+
+
+        </TabControl>
+    </Grid>
+</Window>

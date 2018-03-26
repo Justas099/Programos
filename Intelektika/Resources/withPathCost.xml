@@ -1,0 +1,124 @@
+<root>
+<node>
+	<name>Arad</name>
+	<margin>283,18,331.086666666667,46.96</margin>
+	<edges>
+		<edge>
+			<to>Sibiu</to>
+			<cost>140</cost>
+		</edge>
+		<edge>
+			<to>Zerind</to>
+			<cost>75</cost>
+		</edge>
+		<edge>
+			<to>Timisoara</to>
+			<cost>118</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>Sibiu</name>
+	<margin>202,157,251.03,185.96</margin>
+	<edges>
+		<edge>
+			<to>Arad</to>
+			<cost>140</cost>
+		</edge>
+		<edge>
+			<to>Fagaras</to>
+			<cost>99</cost>
+		</edge>
+		<edge>
+			<to>Oradea</to>
+			<cost>151</cost>
+		</edge>
+		<edge>
+			<to>Rimvicu Vilcea</to>
+			<cost>80</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>Fagaras</name>
+	<margin>12,252,75.1033333333334,280.96</margin>
+	<edges>
+		<edge>
+			<to>Sibiu</to>
+			<cost>99</cost>
+		</edge>
+		<edge>
+			<to>Buharest</to>
+			<cost>211</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>Oradea</name>
+	<margin>158,296,219.776666666667,324.96</margin>
+</node>
+<node>
+	<name>Rimvicu Vilcea</name>
+	<margin>249,241,347.886666666667,269.96</margin>
+	<edges>
+		<edge>
+			<to>Pitesti</to>
+			<cost>97</cost>
+		</edge>
+		<edge>
+			<to>Craiova</to>
+			<cost>146</cost>
+		</edge>
+		<edge>
+			<to>Sibiu</to>
+			<cost>80</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>Buharest</name>
+	<margin>228,444,297.176666666667,472.96</margin>
+</node>
+<node>
+	<name>Craiova</name>
+	<margin>412,407,474.5,435.96</margin>
+</node>
+<node>
+	<name>Pitesti</name>
+	<margin>269,332,324.036666666667,360.96</margin>
+	<edges>
+		<edge>
+			<to>Buharest</to>
+			<cost>101</cost>
+		</edge>
+		<edge>
+			<to>Craiova</to>
+			<cost>138</cost>
+		</edge>
+		<edge>
+			<to>Rimvicu Vilcea</to>
+			<cost>97</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>Timisoara</name>
+	<margin>473,77,546.946666666667,105.96</margin>
+	<edges>
+		<edge>
+			<to>Arad</to>
+			<cost>118</cost>
+		</edge>
+	</edges>
+</node>
+<node>
+	<name>Zerind</name>
+	<margin>323,108,380.056666666667,136.96</margin>
+	<edges>
+		<edge>
+			<to>Arad</to>
+			<cost>75</cost>
+		</edge>
+	</edges>
+</node>
+</root>
